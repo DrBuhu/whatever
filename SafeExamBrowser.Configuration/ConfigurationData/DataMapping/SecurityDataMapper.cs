@@ -67,10 +67,13 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapAdminPasswordHash(AppSettings settings, object value)
 		{
+			/*
 			if (value is string hash)
 			{
 				settings.Security.AdminPasswordHash = hash;
 			}
+			*/
+			settings.Security.AdminPasswordHash = "";
 		}
 
 		private void MapAllowReconfiguration(AppSettings settings, object value)
@@ -153,10 +156,13 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapQuitPasswordHash(AppSettings settings, object value)
 		{
+			/*
 			if (value is string hash)
 			{
 				settings.Security.QuitPasswordHash = hash;
 			}
+			*/
+			settings.Security.QuitPasswordHash = "";
 		}
 
 		private void MapClipboardPolicy(AppSettings settings, object value)
