@@ -95,6 +95,7 @@
     <None Include="Resources\SafeExamBrowser.UserInterface.Desktop.dll" />
     <None Include="Resources\SafeExamBrowser.Client.exe" />
     <None Include="Resources\SafeExamBrowser.exe" />
+    <None Include="Resources\SafeExamBrowser.Configuration.dll" />
     <Content Include="SafeExamBrowser.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

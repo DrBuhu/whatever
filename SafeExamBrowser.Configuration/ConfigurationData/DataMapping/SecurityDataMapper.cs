@@ -83,22 +83,29 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapAllowStickyKeys(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Security.AllowStickyKeys = allow;
 			}
+			*/
+			settings.Security.AllowStickyKeys = true;
 		}
 
 		private void MapAllowTermination(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Security.AllowTermination = allow;
 			}
+			*/
+			settings.Security.AllowTermination = true;
 		}
 
 		private void MapApplicationLogAccess(IDictionary<string, object> rawData, AppSettings settings)
 		{
+			/*
 			var hasValue = rawData.TryGetValue(Keys.Security.AllowApplicationLog, out var value);
 
 			if (hasValue && value is bool allow)
@@ -115,10 +122,14 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 				settings.UserInterface.ActionCenter.ShowApplicationLog = false;
 				settings.UserInterface.Taskbar.ShowApplicationLog = false;
 			}
+			*/
+			settings.UserInterface.ActionCenter.ShowApplicationLog = false;
+			settings.UserInterface.Taskbar.ShowApplicationLog = false;
 		}
 
 		private void MapKioskMode(IDictionary<string, object> rawData, AppSettings settings)
 		{
+			/*
 			var hasCreateNewDesktop = rawData.TryGetValue(Keys.Security.KioskModeCreateNewDesktop, out var createNewDesktop);
 			var hasDisableExplorerShell = rawData.TryGetValue(Keys.Security.KioskModeDisableExplorerShell, out var disableExplorerShell);
 
@@ -136,6 +147,8 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 			{
 				settings.Security.KioskMode = KioskMode.None;
 			}
+			*/
+			settings.Security.KioskMode = KioskMode.None;
 		}
 
 		private void MapQuitPasswordHash(AppSettings settings, object value)
@@ -148,6 +161,7 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapClipboardPolicy(AppSettings settings, object value)
 		{
+			/*
 			const int ALLOW = 0;
 			const int BLOCK = 1;
 
@@ -155,6 +169,8 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 			{
 				settings.Security.ClipboardPolicy = policy == ALLOW ? ClipboardPolicy.Allow : (policy == BLOCK ? ClipboardPolicy.Block : ClipboardPolicy.Isolated);
 			}
+			*/
+			settings.Security.ClipboardPolicy = ClipboardPolicy.Allow;
 		}
 
 		private void MapDisableSessionChangeLockScreen(AppSettings settings, object value)
@@ -167,10 +183,13 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapVirtualMachinePolicy(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Security.VirtualMachinePolicy = allow ? VirtualMachinePolicy.Allow : VirtualMachinePolicy.Deny;
 			}
+			*/
+			settings.Security.VirtualMachinePolicy = VirtualMachinePolicy.Allow;
 		}
 
 		private void MapReconfigurationUrl(AppSettings settings, object value)
@@ -183,18 +202,24 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapVerifyCursorConfiguration(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool verify)
 			{
 				settings.Security.VerifyCursorConfiguration = verify;
 			}
+			*/
+			settings.Security.VerifyCursorConfiguration = false;
 		}
 
 		private void MapVerifySessionIntegrity(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool verify)
 			{
 				settings.Security.VerifySessionIntegrity = verify;
 			}
+			*/
+			settings.Security.VerifySessionIntegrity = false;
 		}
 
 		private void MapVersionRestrictions(AppSettings settings, object value)

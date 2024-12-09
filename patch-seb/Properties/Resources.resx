@@ -124,6 +124,9 @@
   <data name="SafeExamBrowser_Client" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SafeExamBrowser.Client.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="SafeExamBrowser_Configuration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SafeExamBrowser.Configuration.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="SafeExamBrowser_Monitoring" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SafeExamBrowser.Monitoring.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

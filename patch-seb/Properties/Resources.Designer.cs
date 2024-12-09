@@ -83,6 +83,16 @@ namespace patch_seb.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Byte[].
         /// </summary>
+        internal static byte[] SafeExamBrowser_Configuration {
+            get {
+                object obj = ResourceManager.GetObject("SafeExamBrowser_Configuration", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
         internal static byte[] SafeExamBrowser_Monitoring {
             get {
                 object obj = ResourceManager.GetObject("SafeExamBrowser_Monitoring", resourceCulture);

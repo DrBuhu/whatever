@@ -71,6 +71,7 @@ namespace patch_seb
 				{
 					File.Copy(SEBPath + @"SafeExamBrowser.exe", SEBPath + @"SafeExamBrowser.exe.backup");
 					File.Copy(SEBPath + @"SafeExamBrowser.Client.exe", SEBPath + @"SafeExamBrowser.Client.exe.backup");
+					File.Copy(SEBPath + @"SafeExamBrowser.Configuration.dll", SEBPath + @"SafeExamBrowser.Configuration.dll.backup");
 					File.Copy(SEBPath + @"SafeExamBrowser.Monitoring.dll", SEBPath + @"SafeExamBrowser.Monitoring.dll.backup");
 					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll.backup");
 					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup");
@@ -85,12 +86,14 @@ namespace patch_seb
 			{
 				File.Delete(SEBPath + @"SafeExamBrowser.exe");
 				File.Delete(SEBPath + @"SafeExamBrowser.Client.exe");
+				File.Delete(SEBPath + @"SafeExamBrowser.Configuration.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.Monitoring.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.WindowsApi.dll");
 				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.exe",Resources.SafeExamBrowser);
 				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Client.exe", Resources.SafeExamBrowser_Client);
+				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Configuration.dll", Resources.SafeExamBrowser_Configuration);
 				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Monitoring.dll", Resources.SafeExamBrowser_Monitoring);
 				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", Resources.SafeExamBrowser_UserInterface_Desktop);
 				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", Resources.SafeExamBrowser_UserInterface_Shared);
