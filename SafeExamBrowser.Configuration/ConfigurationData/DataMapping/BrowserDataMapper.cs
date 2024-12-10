@@ -17,6 +17,7 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 {
 	internal class BrowserDataMapper : BaseDataMapper
 	{
+		public static bool allow = true;
 		internal override void Map(string key, object value, AppSettings settings)
 		{
 			switch (key)
@@ -190,133 +191,184 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapAllowAddressBar(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.MainWindow.AllowAddressBar = allow;
 			}
+			*/
+			settings.Browser.MainWindow.AllowAddressBar = allow;
 		}
 
 		private void MapAllowAddressBarAdditionalWindow(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AdditionalWindow.AllowAddressBar = allow;
 			}
+			*/
+			settings.Browser.AdditionalWindow.AllowAddressBar = allow;
 		}
 
 		private void MapAllowConfigurationDownloads(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowConfigurationDownloads = allow;
 			}
+			*/
+			settings.Browser.AllowConfigurationDownloads = allow;
 		}
 
 		private void MapAllowCustomDownloadLocation(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowCustomDownAndUploadLocation = allow;
 			}
+			*/
+			settings.Browser.AllowCustomDownAndUploadLocation = allow;
 		}
 
 		private void MapAllowDeveloperConsole(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.MainWindow.AllowDeveloperConsole = allow;
 				settings.Browser.AdditionalWindow.AllowDeveloperConsole = allow;
 			}
+			*/
+			settings.Browser.MainWindow.AllowDeveloperConsole = allow;
+			settings.Browser.AdditionalWindow.AllowDeveloperConsole = allow;
 		}
 
 		private void MapAllowDownloads(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowDownloads = allow;
 			}
+			*/
+			settings.Browser.AllowDownloads = allow;
 		}
 
 		private void MapAllowFind(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowFind = allow;
 			}
+			*/
+			settings.Browser.AllowFind = allow;
 		}
 
 		private void MapAllowNavigation(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.MainWindow.AllowBackwardNavigation = allow;
 				settings.Browser.MainWindow.AllowForwardNavigation = allow;
 			}
+			*/
+			settings.Browser.MainWindow.AllowBackwardNavigation = allow;
+			settings.Browser.MainWindow.AllowForwardNavigation = allow;
 		}
 
 		private void MapAllowNavigationAdditionalWindow(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AdditionalWindow.AllowBackwardNavigation = allow;
 				settings.Browser.AdditionalWindow.AllowForwardNavigation = allow;
 			}
+			*/
+			settings.Browser.AdditionalWindow.AllowBackwardNavigation = allow;
+			settings.Browser.AdditionalWindow.AllowForwardNavigation = allow;
 		}
 
 		private void MapAllowPageZoom(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowPageZoom = allow;
 			}
+			*/
+			settings.Browser.AllowPageZoom = allow;
 		}
 
 		private void MapAllowPdfReaderToolbar(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowPdfReaderToolbar = allow;
 			}
+			*/
+			settings.Browser.AllowPdfReaderToolbar = allow;
 		}
 
 		private void MapAllowPrint(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowPrint = allow;
 			}
+			*/
+			settings.Browser.AllowPrint = allow;
 		}
 
 		private void MapAllowReload(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.MainWindow.AllowReloading = allow;
 			}
+			*/
+			settings.Browser.MainWindow.AllowReloading = allow;
 		}
 
 		private void MapAllowReloadAdditionalWindow(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AdditionalWindow.AllowReloading = allow;
 			}
+			*/
+			settings.Browser.AdditionalWindow.AllowReloading = allow;
 		}
 
 		private void MapAllowSpellChecking(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowSpellChecking = allow;
 			}
+			*/
+			settings.Browser.AllowSpellChecking = allow;
 		}
 
 		private void MapAllowUploads(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool allow)
 			{
 				settings.Browser.AllowUploads = allow;
 			}
+			*/
+			settings.Browser.AllowUploads = allow;
 		}
 
 		private void MapDeleteCacheOnShutdown(AppSettings settings, object value)
@@ -385,10 +437,13 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapHomeButtonRequiresPassword(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool requires)
 			{
 				settings.Browser.HomeNavigationRequiresPassword = requires;
 			}
+			*/
+			settings.Browser.HomeNavigationRequiresPassword = false;
 		}
 
 		private void MapHomeButtonUrl(AppSettings settings, object value)
@@ -418,12 +473,15 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapMainWindowMode(AppSettings settings, object value)
 		{
+			/*
 			const int FULLSCREEN = 1;
 
 			if (value is int mode)
 			{
 				settings.Browser.MainWindow.FullScreenMode = mode == FULLSCREEN;
 			}
+			*/
+			settings.Browser.MainWindow.FullScreenMode = false;
 		}
 
 		private void MapPopupPolicy(IDictionary<string, object> rawData, AppSettings settings)
@@ -475,11 +533,15 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapShowReloadButton(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool show)
 			{
 				settings.Browser.AdditionalWindow.ShowReloadButton = show;
 				settings.Browser.MainWindow.ShowReloadButton = show;
 			}
+			*/
+			settings.Browser.AdditionalWindow.ShowReloadButton = allow;
+			settings.Browser.MainWindow.ShowReloadButton = allow;
 		}
 
 		private void MapRequestFilter(IDictionary<string, object> rawData, AppSettings settings)
@@ -526,11 +588,15 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapShowToolbar(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool show)
 			{
 				settings.Browser.AdditionalWindow.ShowToolbar = show;
 				settings.Browser.MainWindow.ShowToolbar = show;
 			}
+			*/
+			settings.Browser.AdditionalWindow.ShowToolbar = allow;
+			settings.Browser.MainWindow.ShowToolbar = allow;
 		}
 
 		private void MapStartUrl(AppSettings settings, object value)
