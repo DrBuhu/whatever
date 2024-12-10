@@ -20,6 +20,7 @@ namespace patch_seb
 		public static bool isBackup;
 		public static bool started = false;
 		public static string SEBPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\";
+		public static string SupportedSEB = "3.8.0.742";
 
 		public Form1()
         {
@@ -33,7 +34,9 @@ namespace patch_seb
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			AddLog("Safe Exam Browser Patch v" + Application.ProductVersion);
-			
+			AddLog("For Safe Exam Browser version " + SupportedSEB);
+
+
 			if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\SafeExamBrowser.exe")) {
 				AddLog("Safe Exam Browser not found.");
 				button1.Enabled = false;
@@ -41,7 +44,7 @@ namespace patch_seb
 			else
 			{
 				FileVersionInfo SEBVersion = FileVersionInfo.GetVersionInfo(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\SafeExamBrowser.exe");
-				if (SEBVersion.FileVersion != "3.8.0.742")
+				if (SEBVersion.FileVersion != SupportedSEB)
 				{
 					AddLog("Found unsupported Safe Exam Browser version.");
 					button1.Enabled = false;
