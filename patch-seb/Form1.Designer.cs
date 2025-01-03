@@ -39,9 +39,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(167, 9);
+            this.label1.Location = new System.Drawing.Point(189, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 23);
+            this.label1.Size = new System.Drawing.Size(178, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Safe Exam Browser Patch";
             // 
@@ -72,14 +72,14 @@
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(12, 258);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(71, 21);
+            this.checkBox1.Size = new System.Drawing.Size(64, 17);
             this.checkBox1.TabIndex = 3;
             this.checkBox1.Text = "Backup";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 302);
             this.Controls.Add(this.checkBox1);

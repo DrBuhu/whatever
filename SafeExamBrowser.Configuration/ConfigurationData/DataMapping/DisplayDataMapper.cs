@@ -33,10 +33,13 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapAllowedDisplays(AppSettings settings, object value)
 		{
+			/*
 			if (value is int count)
 			{
 				settings.Display.AllowedDisplays = count;
 			}
+			*/
+			settings.Display.AllowedDisplays = 500;
 		}
 
 		private void MapAlwaysOn(AppSettings settings, object value)
@@ -49,18 +52,24 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapIgnoreError(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool ignore)
 			{
 				settings.Display.IgnoreError = ignore;
 			}
+			*/
+			settings.Display.IgnoreError = true;
 		}
 
 		private void MapInternalDisplayOnly(AppSettings settings, object value)
 		{
+			/*
 			if (value is bool internalOnly)
 			{
 				settings.Display.InternalDisplayOnly = internalOnly;
 			}
+			*/
+			settings.Display.InternalDisplayOnly = false;
 		}
 	}
 }

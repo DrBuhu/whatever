@@ -36,8 +36,13 @@ namespace patch_seb
 			AddLog("Safe Exam Browser Patch v" + Application.ProductVersion);
 			AddLog("For Safe Exam Browser version " + SupportedSEB);
 
-
-			if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\SafeExamBrowser.exe")) {
+			if (Environment.OSVersion.Version.Major != 10)
+			{
+				AddLog("Supported Windows version not found.");
+				button1.Enabled = false;
+			}
+			else if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\SafeExamBrowser.exe"))
+			{
 				AddLog("Safe Exam Browser not found.");
 				button1.Enabled = false;
 			}
