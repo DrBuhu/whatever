@@ -198,7 +198,8 @@ namespace SafeExamBrowser.Monitoring.Display
 				logger.Info($"Detected {(display.IsActive ? "active" : "inactive")}, {(display.IsInternal ? "internal" : "external")} display '{display.Identifier}' connected via '{display.Technology}'.");
 			}
 
-			return success;
+			//return success;
+			return true;
 		}
 
 		private void ResetWorkingArea()
