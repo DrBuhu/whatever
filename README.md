@@ -4,10 +4,7 @@ A patch to bypass Safe Exam Browser restrictions.
 - Currently supported SEB version: 3.8.0.742
 
 ## How to use
-1. Download the patch from the latest release
-2. Run it
-3. Select "PATCH"
-4. Enjoy
+Check out the [Wiki](https://github.com/school-cheating/SEBPatch/wiki)
 
 ## Mirrors
 In case you can't download from the latest release, here is a list of mirrors (will be updated eventually):
