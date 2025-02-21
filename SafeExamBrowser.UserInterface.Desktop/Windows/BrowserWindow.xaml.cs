@@ -251,12 +251,18 @@ namespace SafeExamBrowser.UserInterface.Desktop.Windows
 
 		private void BrowserWindow_Closing(object sender, CancelEventArgs e)
 		{
-			
-			Dispatcher.Invoke(() =>
+			if (isMainWindow)
+			{
+				Dispatcher.Invoke(() =>
+				{
+					closing?.Invoke();
+					base.Close();
+				});
+			}
+			else
 			{
 				closing?.Invoke();
-				base.Close();
-			});
+			}
 			/*
 			if (isMainWindow)
 			{

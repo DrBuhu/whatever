@@ -214,10 +214,11 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapIgnoreService(AppSettings settings, object value)
 		{
-			if (value is bool ignore)
-			{
-				settings.Service.IgnoreService = ignore;
-			}
+			//if (value is bool ignore)
+			//{
+			//	settings.Service.IgnoreService = ignore;
+			//}
+			settings.Service.IgnoreService = enable;
 		}
 
 		private void MapPolicy(AppSettings settings, object value)

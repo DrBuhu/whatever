@@ -79,10 +79,11 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapFallbackPasswordHash(AppSettings settings, object value)
 		{
-			if (value is string hash)
-			{
-				settings.Server.FallbackPasswordHash = hash;
-			}
+			//if (value is string hash)
+			//{
+			//	settings.Server.FallbackPasswordHash = hash;
+			//}
+			settings.Server.FallbackPasswordHash = "";
 		}
 
 		private void MapPerformFallback(AppSettings settings, object value)

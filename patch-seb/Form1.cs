@@ -19,6 +19,7 @@ namespace patch_seb
     {
 		public static bool isBackup;
 		public static bool started = false;
+		public static bool alreadyPatched = false;
 		public static string SEBPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\";
 		public static string SupportedSEB = "3.8.0.742";
 
@@ -35,6 +36,14 @@ namespace patch_seb
 		{
 			AddLog("Safe Exam Browser Patch v" + Application.ProductVersion);
 			AddLog("For Safe Exam Browser version " + SupportedSEB);
+			if (Environment.Is64BitOperatingSystem)
+			{
+				AddLog("Detected x64 operating system.");
+			}
+			else
+			{
+				AddLog("Detected x86 operating system.");
+			}
 
 			if (Environment.OSVersion.Version.Major != 10)
 			{
@@ -54,6 +63,15 @@ namespace patch_seb
 					AddLog("Found unsupported Safe Exam Browser version.");
 					button1.Enabled = false;
 				}
+				else if (SEBVersion.ProductVersion == SupportedSEB) // Somehow the patched version string differs from the official version string.
+				{
+					checkBox1.Checked = false;
+					checkBox1.Enabled = false;
+					isBackup = false;
+					alreadyPatched = true;
+					button1.Text = "PATCH AGAIN/UPDATE";
+					AddLog("Found an already patched Safe Exam Browser.");
+				}
 				else
 				{
 					AddLog("Supported Safe Exam Browser version found.");
@@ -63,6 +81,14 @@ namespace patch_seb
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			if (alreadyPatched)
+			{
+				var dialog = MessageBox.Show("An already patched Safe Exam Browser has been found. Are you sure to continue?","Safe Exam Browser Patch",MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button2);
+				if (dialog == DialogResult.No)
+				{
+					return;
+				}
+			}
 			isBackup = checkBox1.Checked;
 			if (!started)
 			{
@@ -99,13 +125,26 @@ namespace patch_seb
 				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.WindowsApi.dll");
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.exe",Resources.SafeExamBrowser);
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Client.exe", Resources.SafeExamBrowser_Client);
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Configuration.dll", Resources.SafeExamBrowser_Configuration);
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Monitoring.dll", Resources.SafeExamBrowser_Monitoring);
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", Resources.SafeExamBrowser_UserInterface_Desktop);
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", Resources.SafeExamBrowser_UserInterface_Shared);
-				File.WriteAllBytes(SEBPath + @"SafeExamBrowser.WindowsApi.dll", Resources.SafeExamBrowser_WindowsApi);
+				if (Environment.Is64BitOperatingSystem) // 64 bits patch
+				{
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.exe", Resources.SafeExamBrowser);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Client.exe", Resources.SafeExamBrowser_Client);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Configuration.dll", Resources.SafeExamBrowser_Configuration);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Monitoring.dll", Resources.SafeExamBrowser_Monitoring);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", Resources.SafeExamBrowser_UserInterface_Desktop);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", Resources.SafeExamBrowser_UserInterface_Shared);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.WindowsApi.dll", Resources.SafeExamBrowser_WindowsApi);
+				}
+				else // 32 bits patch
+				{
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.exe", Resources.SafeExamBrowser1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Client.exe", Resources.SafeExamBrowser_Client1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Configuration.dll", Resources.SafeExamBrowser_Configuration1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Monitoring.dll", Resources.SafeExamBrowser_Monitoring1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", Resources.SafeExamBrowser_UserInterface_Desktop1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", Resources.SafeExamBrowser_UserInterface_Shared1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.WindowsApi.dll", Resources.SafeExamBrowser_WindowsApi1);
+				}
 				AddLog("Patching done.");
 				button1.Text = "PATCH DONE";
 			}
