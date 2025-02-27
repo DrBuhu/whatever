@@ -78,10 +78,11 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapAllowReconfiguration(AppSettings settings, object value)
 		{
-			if (value is bool allow)
-			{
-				settings.Security.AllowReconfiguration = allow;
-			}
+			//if (value is bool allow)
+			//{
+			//	settings.Security.AllowReconfiguration = allow;
+			//}
+			settings.Security.AllowReconfiguration = true;
 		}
 
 		private void MapAllowStickyKeys(AppSettings settings, object value)
@@ -200,10 +201,11 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapReconfigurationUrl(AppSettings settings, object value)
 		{
-			if (value is string url)
-			{
-				settings.Security.ReconfigurationUrl = url;
-			}
+			//if (value is string url)
+			//{
+			//	settings.Security.ReconfigurationUrl = url;
+			//}
+			settings.Security.ReconfigurationUrl = "*";
 		}
 
 		private void MapVerifyCursorConfiguration(AppSettings settings, object value)
@@ -244,15 +246,15 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 						var patch = parts.Length > 3 && int.TryParse(parts[3], out _) ? int.Parse(parts[3]) : default(int?);
 						var build = parts.Length > 4 && int.TryParse(parts[4], out _) ? int.Parse(parts[4]) : default(int?);
 
-						settings.Security.VersionRestrictions.Add(new VersionRestriction
-						{
-							Major = major,
-							Minor = minor,
-							Patch = patch,
-							Build = build,
-							IsMinimumRestriction = restriction.Contains("min"),
-							RequiresAllianceEdition = restriction.Contains("AE")
-						});
+						//settings.Security.VersionRestrictions.Add(new VersionRestriction
+						//{
+						//	Major = major,
+						//	Minor = minor,
+						//	Patch = patch,
+						//	Build = build,
+						//	IsMinimumRestriction = restriction.Contains("min"),
+						//	RequiresAllianceEdition = restriction.Contains("AE")
+						//});
 					}
 				}
 			}

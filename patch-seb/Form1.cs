@@ -22,6 +22,7 @@ namespace patch_seb
 		public static bool alreadyPatched = false;
 		public static string SEBPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\";
 		public static string SupportedSEB = "3.8.0.742";
+		public static int something = 0;
 
 		public Form1()
         {
@@ -58,12 +59,13 @@ namespace patch_seb
 			else
 			{
 				FileVersionInfo SEBVersion = FileVersionInfo.GetVersionInfo(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\SafeExamBrowser.exe");
+				FileVersionInfo SEBDLLVersion = FileVersionInfo.GetVersionInfo(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\SafeExamBrowser.Configuration.dll");
 				if (SEBVersion.FileVersion != SupportedSEB)
 				{
 					AddLog("Found unsupported Safe Exam Browser version.");
 					button1.Enabled = false;
 				}
-				else if (SEBVersion.ProductVersion == SupportedSEB) // Somehow the patched version string differs from the official version string.
+				else if (SEBVersion.ProductVersion == SupportedSEB || SEBDLLVersion.ProductVersion == "1.0.0.0") // Somehow the patched version string differs from the official version string.
 				{
 					checkBox1.Checked = false;
 					checkBox1.Enabled = false;
@@ -103,12 +105,40 @@ namespace patch_seb
 			{
 				try
 				{
+					if (File.Exists(SEBPath + @"SafeExamBrowser.exe.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.exe.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.exe", SEBPath + @"SafeExamBrowser.exe.backup");
+					if (File.Exists(SEBPath + @"SafeExamBrowser.Client.exe.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.Client.exe.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.Client.exe", SEBPath + @"SafeExamBrowser.Client.exe.backup");
+					if (File.Exists(SEBPath + @"SafeExamBrowser.Configuration.dll.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.Configuration.dll.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.Configuration.dll", SEBPath + @"SafeExamBrowser.Configuration.dll.backup");
+					if (File.Exists(SEBPath + @"SafeExamBrowser.Monitoring.dll.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.Monitoring.dll.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.Monitoring.dll", SEBPath + @"SafeExamBrowser.Monitoring.dll.backup");
+					if (File.Exists(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll.backup");
+					if (File.Exists(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup");
+					if (File.Exists(SEBPath + @"SafeExamBrowser.WindowsApi.dll.backup"))
+					{
+						File.Delete(SEBPath + @"SafeExamBrowser.WindowsApi.dll.backup");
+					}
 					File.Copy(SEBPath + @"SafeExamBrowser.WindowsApi.dll", SEBPath + @"SafeExamBrowser.WindowsApi.dll.backup");
 				}
 				catch (Exception ex)
@@ -151,6 +181,19 @@ namespace patch_seb
 			catch (Exception ex)
 			{
 				AddLog(ex.Message);
+			}
+		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+			if (something == 4)
+			{
+				something = 0;
+				MessageBox.Show("Safe Exam Browser Patch v" + Application.ProductVersion + "\nFor Safe Exam Browser version " + SupportedSEB + "\nCreated with love by Vichingo455\n\nBecause Freedom is a right, respect it.", "Safe Exam Browser Patch", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				something++;
 			}
 		}
 	}
