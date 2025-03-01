@@ -130,16 +130,11 @@ namespace patch_seb
 						File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll.backup");
 					}
 					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll.backup");
-					if (File.Exists(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup"))
+					if (File.Exists(SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll.backup"))
 					{
-						File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup");
+						File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll.backup");
 					}
-					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll.backup");
-					if (File.Exists(SEBPath + @"SafeExamBrowser.WindowsApi.dll.backup"))
-					{
-						File.Delete(SEBPath + @"SafeExamBrowser.WindowsApi.dll.backup");
-					}
-					File.Copy(SEBPath + @"SafeExamBrowser.WindowsApi.dll", SEBPath + @"SafeExamBrowser.WindowsApi.dll.backup");
+					File.Copy(SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll", SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll.backup");
 				}
 				catch (Exception ex)
 				{
@@ -153,8 +148,7 @@ namespace patch_seb
 				File.Delete(SEBPath + @"SafeExamBrowser.Configuration.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.Monitoring.dll");
 				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll");
-				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll");
-				File.Delete(SEBPath + @"SafeExamBrowser.WindowsApi.dll");
+				File.Delete(SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll");
 				if (Environment.Is64BitOperatingSystem) // 64 bits patch
 				{
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.exe", Resources.SafeExamBrowser);
@@ -162,8 +156,7 @@ namespace patch_seb
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Configuration.dll", Resources.SafeExamBrowser_Configuration);
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Monitoring.dll", Resources.SafeExamBrowser_Monitoring);
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", Resources.SafeExamBrowser_UserInterface_Desktop);
-					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", Resources.SafeExamBrowser_UserInterface_Shared);
-					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.WindowsApi.dll", Resources.SafeExamBrowser_WindowsApi);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll", Resources.SafeExamBrowser_UserInterface_Mobile);
 				}
 				else // 32 bits patch
 				{
@@ -172,8 +165,7 @@ namespace patch_seb
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Configuration.dll", Resources.SafeExamBrowser_Configuration1);
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.Monitoring.dll", Resources.SafeExamBrowser_Monitoring1);
 					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Desktop.dll", Resources.SafeExamBrowser_UserInterface_Desktop1);
-					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Shared.dll", Resources.SafeExamBrowser_UserInterface_Shared1);
-					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.WindowsApi.dll", Resources.SafeExamBrowser_WindowsApi1);
+					File.WriteAllBytes(SEBPath + @"SafeExamBrowser.UserInterface.Mobile.dll", Resources.SafeExamBrowser_UserInterface_Mobile1);
 				}
 				AddLog("Patching done.");
 				button1.Text = "PATCH DONE";

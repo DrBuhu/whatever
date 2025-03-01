@@ -25,12 +25,14 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapLogLevel(AppSettings settings, object value)
 		{
-			const int ERROR = 0, WARNING = 1, INFO = 2;
+			//const int ERROR = 0, WARNING = 1, INFO = 2;
 
-			if (value is int level)
-			{
-				settings.LogLevel = level == ERROR ? LogLevel.Error : (level == WARNING ? LogLevel.Warning : (level == INFO ? LogLevel.Info : LogLevel.Debug));
-			}
+			//if (value is int level)
+			//{
+			//	settings.LogLevel = level == ERROR ? LogLevel.Error : (level == WARNING ? LogLevel.Warning : (level == INFO ? LogLevel.Info : LogLevel.Debug));
+			//}
+			const int ERROR = 0;
+			settings.LogLevel = ERROR;
 		}
 	}
 }

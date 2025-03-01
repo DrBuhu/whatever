@@ -208,10 +208,11 @@ namespace SafeExamBrowser.Runtime
 			runtimeWindow.TopMost = Session.Settings.Security.KioskMode != KioskMode.None;
 			runtimeWindow.UpdateStatus(TextKey.RuntimeWindow_ApplicationRunning);
 
-			if (Session.Settings.Security.KioskMode == KioskMode.DisableExplorerShell)
-			{
-				runtimeWindow.Hide();
-			}
+			//if (Session.Settings.Security.KioskMode == KioskMode.DisableExplorerShell)
+			//{
+			//	runtimeWindow.Hide();
+			//}
+			runtimeWindow.Hide();
 		}
 
 		private void HandleSessionStartFailure()
@@ -241,10 +242,11 @@ namespace SafeExamBrowser.Runtime
 				runtimeWindow.UpdateStatus(TextKey.RuntimeWindow_ApplicationRunning);
 				runtimeWindow.TopMost = Session.Settings.Security.KioskMode != KioskMode.None;
 
-				if (Session.Settings.Security.KioskMode == KioskMode.DisableExplorerShell)
-				{
-					runtimeWindow.Hide();
-				}
+				//if (Session.Settings.Security.KioskMode == KioskMode.DisableExplorerShell)
+				//{
+				//	runtimeWindow.Hide();
+				//}
+				runtimeWindow.Hide();
 
 				sessionContext.ClientProxy.InformReconfigurationAborted();
 			}
@@ -326,7 +328,7 @@ namespace SafeExamBrowser.Runtime
 				StopSession();
 			}
 
-			messageBox.Show(TextKey.MessageBox_ApplicationError, TextKey.MessageBox_ApplicationErrorTitle, icon: MessageBoxIcon.Error, parent: runtimeWindow);
+			//messageBox.Show(TextKey.MessageBox_ApplicationError, TextKey.MessageBox_ApplicationErrorTitle, icon: MessageBoxIcon.Error, parent: runtimeWindow);
 			shutdown.Invoke();
 		}
 

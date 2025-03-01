@@ -30,26 +30,29 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapInitialVolumeLevel(AppSettings settings, object value)
 		{
-			if (value is int volume)
-			{
-				settings.Audio.InitialVolume = volume;
-			}
+			//if (value is int volume)
+			//{
+			//	settings.Audio.InitialVolume = volume;
+			//}
+			settings.Audio.InitialVolume = 67;
 		}
 
 		private void MapMuteAudio(AppSettings settings, object value)
 		{
-			if (value is bool mute)
-			{
-				settings.Audio.MuteAudio = mute;
-			}
+			//if (value is bool mute)
+			//{
+			//	settings.Audio.MuteAudio = mute;
+			//}
+			settings.Audio.MuteAudio = false;
 		}
 
 		private void MapSetInitialVolumeLevel(AppSettings settings, object value)
 		{
-			if (value is bool initialize)
-			{
-				settings.Audio.InitializeVolume = initialize;
-			}
+			//if (value is bool initialize)
+			//{
+			//	settings.Audio.InitializeVolume = initialize;
+			//}
+			settings.Audio.InitializeVolume = true;
 		}
 	}
 }
