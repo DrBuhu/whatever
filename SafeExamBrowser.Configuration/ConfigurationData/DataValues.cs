@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -113,11 +113,14 @@ namespace SafeExamBrowser.Configuration.ConfigurationData
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "CiscoCollabHost.exe", OriginalName = "CiscoCollabHost.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "CiscoWebExStart.exe", OriginalName = "CiscoWebExStart.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "Discord.exe", OriginalName = "Discord.exe" });
+			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "DiscordPTB.exe", OriginalName = "DiscordPTB.exe" });
+			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "DiscordCanary.exe", OriginalName = "DiscordCanary.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "Element.exe", OriginalName = "Element.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "g2mcomm.exe", OriginalName = "g2mcomm.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "g2mlauncher.exe", OriginalName = "g2mlauncher.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "g2mstart.exe", OriginalName = "g2mstart.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "GotoMeetingWinStore.exe", OriginalName = "GotoMeetingWinStore.exe" });
+			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "Guilded.exe", OriginalName = "Guilded.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "join.me.exe", OriginalName = "join.me.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "join.me.sentinel.exe", OriginalName = "join.me.sentinel.exe" });
 			settings.Applications.Blacklist.Add(new BlacklistApplication { ExecutableName = "Microsoft.Media.player.exe", OriginalName = "Microsoft.Media.player.exe" });
@@ -171,7 +174,7 @@ namespace SafeExamBrowser.Configuration.ConfigurationData
 			settings.Browser.AllowPdfReader = true;
 			settings.Browser.AllowPdfReaderToolbar = false;
 			settings.Browser.AllowPrint = false;
-			settings.Browser.AllowUploads = true;
+			settings.Browser.AllowUploads = false;
 			settings.Browser.DeleteCacheOnShutdown = true;
 			settings.Browser.DeleteCookiesOnShutdown = true;
 			settings.Browser.DeleteCookiesOnStartup = true;
@@ -240,15 +243,16 @@ namespace SafeExamBrowser.Configuration.ConfigurationData
 
 			settings.Proctoring.Enabled = false;
 			settings.Proctoring.ForceRaiseHandMessage = false;
+			settings.Proctoring.ScreenProctoring.CacheSize = 500;
 			settings.Proctoring.ScreenProctoring.Enabled = false;
 			settings.Proctoring.ScreenProctoring.ImageDownscaling = 1.0;
 			settings.Proctoring.ScreenProctoring.ImageFormat = ImageFormat.Png;
 			settings.Proctoring.ScreenProctoring.ImageQuantization = ImageQuantization.Grayscale4bpp;
-			settings.Proctoring.ScreenProctoring.MaxInterval = 5000;
+			settings.Proctoring.ScreenProctoring.IntervalMaximum = 5000;
+			settings.Proctoring.ScreenProctoring.IntervalMinimum = 1000;
 			settings.Proctoring.ScreenProctoring.MetaData.CaptureApplicationData = true;
 			settings.Proctoring.ScreenProctoring.MetaData.CaptureBrowserData = true;
 			settings.Proctoring.ScreenProctoring.MetaData.CaptureWindowTitle = true;
-			settings.Proctoring.ScreenProctoring.MinInterval = 1000;
 			settings.Proctoring.ShowRaiseHandNotification = true;
 			settings.Proctoring.ShowTaskbarNotification = true;
 

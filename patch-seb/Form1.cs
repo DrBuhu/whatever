@@ -21,7 +21,7 @@ namespace patch_seb
 		public static bool started = false;
 		public static bool alreadyPatched = false;
 		public static string SEBPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + @"\SafeExamBrowser\Application\";
-		public static string SupportedSEB = "3.8.0.742";
+		public static string SupportedSEB = "3.9.0.787";
 		public static int something = 0;
 
 		public Form1()

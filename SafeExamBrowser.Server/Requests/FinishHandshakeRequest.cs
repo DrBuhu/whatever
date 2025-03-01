@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,10 +13,10 @@ using SafeExamBrowser.Settings.Server;
 
 namespace SafeExamBrowser.Server.Requests
 {
-	internal class AppSignatureKeyRequest : BaseRequest
+	internal class FinishHandshakeRequest : Request
 	{
-		internal AppSignatureKeyRequest(
-			ApiVersion1 api,
+		internal FinishHandshakeRequest(
+			Api api,
 			HttpClient httpClient,
 			ILogger logger,
 			Parser parser,
@@ -24,10 +24,10 @@ namespace SafeExamBrowser.Server.Requests
 		{
 		}
 
-		internal bool TryExecute(string appSignatureKey, out string message)
+		internal bool TryExecute(out string message, string appSignatureKey = default)
 		{
-			var content = $"seb_signature_key={appSignatureKey}";
-			var success = TryExecute(new HttpMethod("PATCH"), api.HandshakeEndpoint, out var response, content, ContentType.URL_ENCODED, Authorization, Token);
+			var content = appSignatureKey != default ? $"seb_signature_key={appSignatureKey}" : default;
+			var success = TryExecute(HttpMethod.Put, api.HandshakeEndpoint, out var response, content, ContentType.URL_ENCODED, Authorization, Token);
 
 			message = response.ToLogString();
 

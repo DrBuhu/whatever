@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -30,29 +30,26 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapInitialVolumeLevel(AppSettings settings, object value)
 		{
-			//if (value is int volume)
-			//{
-			//	settings.Audio.InitialVolume = volume;
-			//}
-			settings.Audio.InitialVolume = 67;
+			if (value is int volume)
+			{
+				settings.Audio.InitialVolume = volume;
+			}
 		}
 
 		private void MapMuteAudio(AppSettings settings, object value)
 		{
-			//if (value is bool mute)
-			//{
-			//	settings.Audio.MuteAudio = mute;
-			//}
-			settings.Audio.MuteAudio = false;
+			if (value is bool mute)
+			{
+				settings.Audio.MuteAudio = mute;
+			}
 		}
 
 		private void MapSetInitialVolumeLevel(AppSettings settings, object value)
 		{
-			//if (value is bool initialize)
-			//{
-			//	settings.Audio.InitializeVolume = initialize;
-			//}
-			settings.Audio.InitializeVolume = true;
+			if (value is bool initialize)
+			{
+				settings.Audio.InitializeVolume = initialize;
+			}
 		}
 	}
 }

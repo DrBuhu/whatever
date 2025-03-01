@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -51,6 +51,10 @@ namespace SafeExamBrowser.Monitoring.Applications
 		public InitializationResult Initialize(ApplicationSettings settings)
 		{
 			var result = new InitializationResult();
+
+			InitializeProcesses();
+			InitializeBlacklist(settings, result);
+			InitializeWhitelist(settings, result);
 
 			return result;
 		}
@@ -110,19 +114,73 @@ namespace SafeExamBrowser.Monitoring.Applications
 		{
 			var success = true;
 
-			
+			foreach (var process in application.Processes)
+			{
+				success &= TryTerminate(process);
+			}
 
 			return success;
 		}
 
 		private void SystemEvent_WindowChanged(IntPtr handle)
 		{
-			
+			if (handle != IntPtr.Zero && activeWindow?.Handle != handle)
+			{
+				var title = nativeMethods.GetWindowTitle(handle);
+				var window = new Window { Handle = handle, Title = title };
+
+				logger.Debug($"Window has changed from {activeWindow} to {window}.");
+				activeWindow = window;
+
+				Task.Run(() =>
+				{
+					if (!IsAllowed(window) && !TryHide(window))
+					{
+						Close(window);
+					}
+				});
+			}
 		}
 
 		private void Timer_Elapsed(object sender, ElapsedEventArgs e)
 		{
-			
+			var failed = new List<RunningApplication>();
+			var running = processFactory.GetAllRunning();
+			var started = running.Where(r => processes.All(p => p.Id != r.Id)).ToList();
+			var terminated = processes.Where(p => running.All(r => r.Id != p.Id)).ToList();
+
+			foreach (var process in started)
+			{
+				logger.Debug($"Process {process} has been started [{process.GetAdditionalInfo()}].");
+				processes.Add(process);
+
+				if (process.Name == "explorer.exe")
+				{
+					HandleExplorerStart(process);
+				}
+				else if (!IsAllowed(process) && !TryTerminate(process))
+				{
+					AddFailed(process, failed);
+				}
+				else if (IsWhitelisted(process, out var applicationId))
+				{
+					HandleInstanceStart(applicationId.Value, process);
+				}
+			}
+
+			foreach (var process in terminated)
+			{
+				logger.Debug($"Process {process} has been terminated.");
+				processes.Remove(process);
+			}
+
+			if (failed.Any())
+			{
+				logger.Warn($"Failed to terminate these blacklisted applications: {string.Join(", ", failed.Select(a => a.Name))}.");
+				TerminationFailed?.Invoke(failed);
+			}
+
+			timer.Start();
 		}
 
 		private void AddFailed(IProcess process, List<RunningApplication> failed)

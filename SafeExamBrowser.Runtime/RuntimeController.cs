@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -115,6 +115,7 @@ namespace SafeExamBrowser.Runtime
 				logger.Log(string.Empty);
 				logger.Subscribe(runtimeWindow);
 				splashScreen.Hide();
+
 				StartSession();
 			}
 			else
@@ -204,9 +205,13 @@ namespace SafeExamBrowser.Runtime
 
 			runtimeWindow.ShowProgressBar = false;
 			runtimeWindow.ShowLog = Session.Settings.Security.AllowApplicationLogAccess;
-			runtimeWindow.TopMost = false;
+			runtimeWindow.TopMost = Session.Settings.Security.KioskMode != KioskMode.None;
 			runtimeWindow.UpdateStatus(TextKey.RuntimeWindow_ApplicationRunning);
-			runtimeWindow.Hide();
+
+			if (Session.Settings.Security.KioskMode == KioskMode.DisableExplorerShell)
+			{
+				runtimeWindow.Hide();
+			}
 		}
 
 		private void HandleSessionStartFailure()
@@ -321,7 +326,7 @@ namespace SafeExamBrowser.Runtime
 				StopSession();
 			}
 
-			//messageBox.Show(TextKey.MessageBox_ApplicationError, TextKey.MessageBox_ApplicationErrorTitle, icon: MessageBoxIcon.Error, parent: runtimeWindow);
+			messageBox.Show(TextKey.MessageBox_ApplicationError, TextKey.MessageBox_ApplicationErrorTitle, icon: MessageBoxIcon.Error, parent: runtimeWindow);
 			shutdown.Invoke();
 		}
 

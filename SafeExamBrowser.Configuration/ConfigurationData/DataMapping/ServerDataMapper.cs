@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -79,11 +79,10 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapFallbackPasswordHash(AppSettings settings, object value)
 		{
-			//if (value is string hash)
-			//{
-			//	settings.Server.FallbackPasswordHash = hash;
-			//}
-			settings.Server.FallbackPasswordHash = "";
+			if (value is string hash)
+			{
+				settings.Server.FallbackPasswordHash = hash;
+			}
 		}
 
 		private void MapPerformFallback(AppSettings settings, object value)

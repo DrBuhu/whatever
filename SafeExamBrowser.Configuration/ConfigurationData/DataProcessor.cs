@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (c) 2024 ETH Zürich, IT Services
+ * Copyright (c) 2025 ETH Zürich, IT Services
  * 
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -35,8 +35,15 @@ namespace SafeExamBrowser.Configuration.ConfigurationData
 
 		private void AllowBrowserToolbarForReloading(AppSettings settings)
 		{
-			settings.Browser.AdditionalWindow.ShowToolbar = true;
-			settings.Browser.MainWindow.ShowToolbar = true;
+			if (settings.Browser.AdditionalWindow.AllowReloading && settings.Browser.AdditionalWindow.ShowReloadButton)
+			{
+				settings.Browser.AdditionalWindow.ShowToolbar = true;
+			}
+
+			if (settings.Browser.MainWindow.AllowReloading && settings.Browser.MainWindow.ShowReloadButton)
+			{
+				settings.Browser.MainWindow.ShowToolbar = true;
+			}
 		}
 
 		private void CalculateConfigurationKey(IDictionary<string, object> rawData, AppSettings settings)
@@ -60,15 +67,15 @@ namespace SafeExamBrowser.Configuration.ConfigurationData
 		private void InitializeBrowserHomeFunctionality(AppSettings settings)
 		{
 			settings.Browser.MainWindow.ShowHomeButton = settings.Browser.UseStartUrlAsHomeUrl || !string.IsNullOrWhiteSpace(settings.Browser.HomeUrl);
-			settings.Browser.HomePasswordHash = "";
+			settings.Browser.HomePasswordHash = settings.Security.QuitPasswordHash;
 		}
 
 		private void InitializeClipboardSettings(AppSettings settings)
 		{
-			settings.Browser.UseIsolatedClipboard = false;
-			settings.Keyboard.AllowCtrlC = true;
-			settings.Keyboard.AllowCtrlV = true;
-			settings.Keyboard.AllowCtrlX = true;
+			settings.Browser.UseIsolatedClipboard = settings.Security.ClipboardPolicy == ClipboardPolicy.Isolated;
+			settings.Keyboard.AllowCtrlC = settings.Security.ClipboardPolicy != ClipboardPolicy.Block;
+			settings.Keyboard.AllowCtrlV = settings.Security.ClipboardPolicy != ClipboardPolicy.Block;
+			settings.Keyboard.AllowCtrlX = settings.Security.ClipboardPolicy != ClipboardPolicy.Block;
 		}
 
 		private void InitializeProctoringSettings(AppSettings settings)
