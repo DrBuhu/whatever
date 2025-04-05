@@ -54,6 +54,7 @@ namespace SafeExamBrowser.Monitoring
 
 		public bool IsVirtualMachine()
 		{
+			/*
 			var isVirtualMachine = false;
 
 			isVirtualMachine |= HasVirtualDevice();
@@ -61,10 +62,10 @@ namespace SafeExamBrowser.Monitoring
 			isVirtualMachine |= IsVirtualCpu();
 			isVirtualMachine |= IsVirtualRegistry();
 			isVirtualMachine |= IsVirtualSystem(systemInfo.BiosInfo, systemInfo.Manufacturer, systemInfo.Model);
+			*/
+			logger.Debug($"Computer '{systemInfo.Name}' appears not to be a virtual machine.");
 
-			logger.Debug($"Computer '{systemInfo.Name}' appears {(isVirtualMachine ? "" : "not ")}to be a virtual machine.");
-
-			return isVirtualMachine;
+			return false;
 		}
 
 		private bool HasVirtualDevice()
