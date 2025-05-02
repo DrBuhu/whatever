@@ -189,20 +189,20 @@ namespace SafeExamBrowser.Configuration.ConfigurationData.DataMapping
 
 		private void MapAllowAddressBar(AppSettings settings, object value)
 		{
-			//if (value is bool allow)
-			//{
-			//	settings.Browser.MainWindow.AllowAddressBar = allow;
-			//}
-			settings.Browser.MainWindow.AllowAddressBar = false;
+			if (value is bool allow)
+			{
+				settings.Browser.MainWindow.AllowAddressBar = allow;
+			}
+			//settings.Browser.MainWindow.AllowAddressBar = false;
 		}
 
 		private void MapAllowAddressBarAdditionalWindow(AppSettings settings, object value)
 		{
-			//if (value is bool allow)
-			//{
-			//	settings.Browser.AdditionalWindow.AllowAddressBar = allow;
-			//}
-			settings.Browser.AdditionalWindow.AllowAddressBar = false;
+			if (value is bool allow)
+			{
+				settings.Browser.AdditionalWindow.AllowAddressBar = allow;
+			}
+			//settings.Browser.AdditionalWindow.AllowAddressBar = false;
 		}
 
 		private void MapAllowConfigurationDownloads(AppSettings settings, object value)
