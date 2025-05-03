@@ -10,9 +10,9 @@ assignees: ''
 > [!IMPORTANT]
 > - Please _always_ consult the FAQs before creating an issue: https://github.com/school-cheating/SEBPatch/wiki/FAQs.
 > - Please _always_ attach the log file(s) of the affected session(s)! They can be found under `%LocalAppData%\SafeExamBrowser\Logs`.
-> - Please _always_ follow this issue template. From now on issues not respecting this template will be closed and deleted.
+> - Please _always_ follow this issue template. Issues not respecting this template will be closed and ignored.
 
-**Describe the Bug**
+**Bug Description**
 A clear and concise description of what the bug is.
 
 **Steps to Reproduce**
